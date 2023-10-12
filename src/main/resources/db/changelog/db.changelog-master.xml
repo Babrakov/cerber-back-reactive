@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.6.xsd">
+
+    <changeSet id="create-persons-table" author="sergei.babrakov">
+        <createTable tableName="persons">
+            <column name="id" type="serial4">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="surname" type="varchar(255)"/>
+            <column name="name" type="varchar(255)"/>
+            <column name="patronymic" type="varchar(255)"/>
+            <column name="born" type="date"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="populate-persons-table" author="sergei.babrakov">
+        <sqlFile path="classpath:/db/changelog/data/populate-persons-data.sql"/>
+    </changeSet>
+
+    <changeSet id="create-products-table" author="sergei.babrakov">
+        <createTable tableName="products">
+            <column name="id" type="serial4">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="varchar(255)"/>
+            <column name="price" type="float8"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="populate-products-table" author="sergei.babrakov">
+        <sqlFile path="classpath:/db/changelog/data/populate-products-data.sql"/>
+    </changeSet>
+
+
+</databaseChangeLog>

@@ -1,0 +1,20 @@
+server:
+  port: 8080
+  forward-headers-strategy: native
+
+#logging:
+#  level:
+#    root: DEBUG
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:2345/cerber
+    username: user
+    password: password
+
+  liquibase:
+    enabled: true
+    url: jdbc:postgresql://localhost:2345/cerber
+    user: user
+    password: password
+    change-log: classpath:/db/changelog/db.changelog-master.xml
